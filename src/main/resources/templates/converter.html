@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Конвертер валют</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            margin: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        select, input, button {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        h2 {
+            margin-top: 20px;
+            color: #007bff;
+        }
+    </style>
+</head>
+
+<body>
+
+<form method="post" action="/converter">
+    <select name="sourceCurrency">
+        <option value="USD" id="USDfrom">USD</option>
+        <option value="EUR" id="EURfrom">EUR</option>
+        <option value="RUB" id="RUBfrom">RUB</option>
+    </select>
+    <input type="text" id="amount" name="amount" placeholder="Введите сумму" required>
+    <select name="targetCurrency">
+        <option value="USD" id="USDinto">USD</option>
+        <option value="EUR" id="EURDinto">EUR</option>
+        <option value="RUB" id="RUBinto"> RUB</option>
+    </select>
+    <input type="submit" value="Конвертировать" style="background-color: #007bff; color: #fff;">
+</form>
+<h2 th:if="${result}" th:text="${result}"></h2>
+
+</body>
+
+</html>
